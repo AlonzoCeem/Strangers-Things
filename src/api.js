@@ -65,14 +65,45 @@ const login = async(credentials)=> {
   return loginWithToken();
 };
 
+const deletePost = async(postId)=> {
+  const token = window.localStorage.getItem('token');
+  try {
+      await axios.delete(
+      `${BASE_URL}/posts/${postId}`,
+      {
+        headers: {
+          authorization: `Bearer ${ token }`
+        }
+      }
+    );
+  } catch(err){
+    console.error(err)
+  }
+}
+
+const editPost = async(post, postId)=> {
+  const token = window.localStorage.getItem('token');
+  const response = await axios.patch(
+    `${BASE_URL}/posts/${postId}`,
+    { post },
+    {
+      headers: {
+        authorization: `Bearer ${ token }`
+      }
+    }
+  );
+  return response.data.data.post;
+}
+
 const api = {
   logout,
   register,
   login,
   loginWithToken,
   fetchPosts,
-  createPost
-
+  createPost,
+  deletePost,
+  editPost
 };
 
 export default api;

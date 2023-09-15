@@ -10,3 +10,11 @@ form > * {
 .mine {
   font-weight: bold;
 }
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}

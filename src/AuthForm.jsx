@@ -27,9 +27,11 @@ const AuthForm = (props)=> {
       {
         error ? JSON.stringify(error, null, 2) : null
       }
-      <input value={ username } onChange={ ev => setUsername(ev.target.value )}/>
-      <input value={ password } onChange={ ev => setPassword(ev.target.value )}/>
-      <button>{ props.txt }</button>
+      <input placeholder="Username" value={ username } onChange={ ev => setUsername(ev.target.value )}/>
+      <input placeholder="Password" value={ password } onChange={ ev => setPassword(ev.target.value )}/>
+      {
+        username === '' || password === '' ? <button disabled>{ props.txt }</button> : <button>{ props.txt }</button>
+      }
     </form>
   );
 };
