@@ -1,3 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin:0;
+  background-color: gray;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -7,14 +16,94 @@ form > * {
   margin: 0.5rem;
 }
 
-.mine {
-  font-weight: bold;
+.postPrice {
+  color: orange;
 }
 
 li {
   list-style-type: none;
+  padding: 0;
 }
 
-a {
-  text-decoration: none;
+.post{
+  border: solid 1px white;
+  width: calc(100%/4);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  font-size: .9em;
+  background-color: rgb(59, 56, 56);
+}
+
+ul {
+  padding: 0;
+  margin: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: row;
+  align-items: center; */
+}
+
+.postLink {
+  color: white;
+  text-decoration-color: white;
+}
+
+#postPrice {
+  color: orange;
+}
+
+#postAuthor {
+  color: green;
+}
+
+#postLocation {
+  color: pink;
+}
+
+#mine {
+  background-color:cornsilk;
+}
+
+#mine > a > div {
+  font-weight: bold;
+  color: red;
+}
+
+.postDiv {
+  width:95%;
+  display:flex;
+  flex-wrap: wrap;
+  white-space: normal;
+  word-break: break-all;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+.nav > a {
+  font-size:1em;
+  padding: 0.3em;
+  color:white;
+}
+
+.userDisplay {
+  text-align: center;
+}
+
+.userDisplay > h1 {
+  margin-bottom:0.25em;
+  color:white;
+  text-shadow: 2px 2px black;
+}
+
+.content {
+  color:white;
+  text-align: center;
+  border: solid 1px white;
+  margin:1em;
 }

@@ -4,6 +4,7 @@ import api from './api';
 import EditPost from './EditPost';
 
 const Post = ({ posts, auth, setPosts })=> {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   const navigate = useNavigate();
   const { id } = useParams();
   const post = posts.find(post => post._id === id);
@@ -18,7 +19,7 @@ const Post = ({ posts, auth, setPosts })=> {
     return null;
   }
   return (
-    <div>
+    <div className="content">
       <h1>{ post.title }</h1>
       <p>{ post.description }</p>
       { auth._id === post.author._id ? <EditPost post={ post } setPosts={ setPosts } posts={ posts }/>: ''}

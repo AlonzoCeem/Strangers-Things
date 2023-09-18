@@ -59,7 +59,7 @@ function App() {
 
   const Contact = ()=> {
     return (
-      <div>
+      <div className="content">
         <h1>Contact Us!</h1>
         <p>Phone: xxx-xxx-xxxx</p>
         <p>Email: SevenAteNine@example.com</p>
@@ -70,40 +70,45 @@ function App() {
 
   return (
     <>
-      <h1><Link to='/'>Strangers Things (Total # of posts: { posts.length })</Link></h1>
       {
         auth.username ? (
-          <div>
-            <h1>
-              Welcome { auth.username } {`(# of your posts: ${ auth.posts.filter( post => post.active === true).length })`}
-              <br/>
+          <div className="head">
+            <div className="nav">
+              <Link to='/'>Strangers Things (Total # of posts: { posts.length })</Link>
+              <Link to='/about_us'> About Us </Link>
+              <Link to='/contact'> Contact </Link>
+              <Link to='/posts/create'> Create A Post </Link>
+              <Link to='/expensive'> Most Expensive </Link>
+            </div>
+            <div className="userDisplay">
+              <h1>Welcome { auth.username }<br/>{`(# of your posts: ${ auth.posts.filter( post => post.active === true).length })`}</h1>
               <button onClick={ logout }>Logout</button>
-            </h1>
-            <Link to='/about_us'> About Us </Link>
-            <Link to='/contact'> Contact </Link>
-            <Link to='/posts/create'> Create A Post </Link>
-            <Link to='/expensive'> Most Expensive </Link>
+            </div>
             <Routes>
               <Route path='/posts/create' element={ <CreatePost createPost={ createPost } />} />
             </Routes>
           </div>
         ): (
-          <>
-            <AuthForm submit={ register } txt='Register'/>
-            <AuthForm submit={ login } txt='Login'/>
+          <div>
+            <div className="nav">
+            <Link to='/'>Strangers Things (Total # of posts: { posts.length })</Link>
             <Link to='/about_us'> About Us </Link>
             <Link to='/contact'> Contact </Link>
             <Link to='/expensive'> Most Expensive </Link>
-          </>
+            </div>
+            <AuthForm submit={ login } txt='Login'/>
+            <AuthForm submit={ register } txt='Register'/>
+          </div>
         )
       }
-      <Posts posts={ posts } auth={ auth }/>
       <Routes>
         <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth } setPosts={ setPosts }/>} />
         <Route path='/about_us' element={ <AboutUs />} />
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/expensive' element={<Expensive posts={posts}/>}/>
       </Routes>
+      <Posts posts={ posts } auth={ auth }/>
+
     </>
   )
 }

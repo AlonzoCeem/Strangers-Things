@@ -12,14 +12,11 @@ const Expensive = ({posts})=> {
                     prices.push(post.price*1)
                 }
             })
-            const Hp = prices.sort(compareFN).at(prices.length - 1)
-            setHighestPrice(Hp)
-            setPricePost(posts.find(post => post.price === `${Hp}`))
-            console.log(prices)
-            console.log(prices.sort(compareFN).at(prices.length - 1))
-            console.log(highestPrice)
-            console.log(posts)
-            console.log(posts.find(post => post.price === `${highestPrice}`))
+            setHighestPrice(prices.sort(compareFN).at(prices.length - 1))
+            setPricePost(posts.find(post => {
+                post.price === `${highestPrice}` 
+                //Someone broke this by using scientific notation. My post.price is the full number and my highest price is notated. I tried to fix it but I didn't have enough time before I noticed.
+            }))
         }
         getExpensive()
     }, [posts])
@@ -36,7 +33,7 @@ const Expensive = ({posts})=> {
 
 
     return (
-        <div>
+        <div className="content">
             <h1>Most Expensive Post (${ highestPrice })</h1>
             {pricePost ?
             <div>

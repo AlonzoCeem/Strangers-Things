@@ -39,7 +39,7 @@ const EditPost = ({ post, setPosts, posts })=> {
 
     return (
         <div>
-        <h1>Edit</h1>
+        <h1>Edit (Only you can see this)</h1>
         <form onSubmit={ submit }>
             {
             error ? JSON.stringify(error, null, 2) : null
